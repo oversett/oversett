@@ -1,0 +1,1 @@
+# `translate` — a CLI app that translates docs

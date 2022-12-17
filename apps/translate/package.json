@@ -1,0 +1,8 @@
+{
+  "name": "translate",
+  "packageManager": "yarn@3.3.0",
+  "composite": true,
+  "dependencies": {
+    "commander": "^9.4.1"
+  }
+}

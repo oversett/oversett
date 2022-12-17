@@ -1,2 +1,1 @@
-# oversett
-Translate all the docs
+# _Oversett_ — Translate all the docs
