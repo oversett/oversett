@@ -3,6 +3,16 @@
   "packageManager": "yarn@3.3.0",
   "composite": true,
   "dependencies": {
-    "commander": "^9.4.1"
+    "commander": "^9.4.1",
+    "deepl-node": "^1.7.2",
+    "dotenv": "^16.0.3",
+    "dotenv-safe": "^8.2.0",
+    "marked": "^4.2.4",
+    "turndown": "^7.1.1"
+  },
+  "devDependencies": {
+    "@types/dotenv-safe": "^8",
+    "@types/marked": "^4",
+    "@types/turndown": "^5.0.1"
   }
 }
