@@ -4,6 +4,12 @@ We are translating web development documentation (e.g. [MUI](https://mui.com)) i
 
 This is used primarily to teach web development to people who can't speak fluent English. See [webdev.artyom.me](https://webdev.artyom.me) for the details.
 
+## File structure
+
+- `apps/translate` — CLI tool for translation, written in TypeScript
+- `ml/text/` — Machine learning models for text processing, written in Python
+  - `./code_ner` — Named Entity Recognition model for detecting inline code in MUI docs
+
 ## How to run locally
 
 - `yarn install`
