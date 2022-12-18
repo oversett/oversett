@@ -58,7 +58,7 @@ function markdownToDeeplHtml(markdown: string): string {
         },
         // Using <div> and data-severity instead of <aside> and specific classes
         renderer(token) {
-          return `<div class="callout" data-severity="${
+          return `<div class="____callout" data-severity="${
             token.severity
           }">${this.parser.parse(token.tokens!)}\n</div>`
         },
@@ -86,10 +86,11 @@ function deeplHtmlToMarkdown(html: string): string {
   const turndownService = new TurndownService({
     headingStyle: "atx",
     codeBlockStyle: "fenced",
+    bulletListMarker: "-",
   })
   turndownService.addRule("callout", {
     filter: (node) =>
-      node.nodeName === "DIV" && node.classList.contains("callout"),
+      node.nodeName === "DIV" && node.classList.contains("____callout"),
     replacement: (content, node) => {
       const severity = (node as Element).getAttribute("data-severity")
       return `:::${severity}\n${content.trim()}\n:::`
@@ -128,5 +129,5 @@ export async function translateMui(
     : { text: html }
   const translatedMarkdown = deeplHtmlToMarkdown(translatedHtml.text)
 
-  return `${renderHeaders(headers as any)}\n\n${translatedMarkdown}`
+  return `${renderHeaders(headers)}\n\n${translatedMarkdown}\n`
 }
