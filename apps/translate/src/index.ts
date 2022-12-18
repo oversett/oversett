@@ -3,7 +3,7 @@ dotenvSafe.config({ allowEmptyValues: true })
 
 import { Command } from "commander"
 import { promises as fs } from "fs"
-import { translateMui } from "./mui"
+import { translateMui } from "./mui/translate"
 
 const program = new Command()
 
@@ -13,9 +13,10 @@ program
   .command("mui")
   .description("Translate MUI docs")
   .argument("<file>", "File to translate")
-  .action(async (file: string) => {
+  .option("--no-translate", "Parse and render, but don't translate")
+  .action(async (file: string, options) => {
     let content = (await fs.readFile(file)).toString()
-    console.log(await translateMui(content))
+    console.log(await translateMui(content, options))
   })
 
 program.parse()

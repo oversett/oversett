@@ -3,15 +3,21 @@
   "packageManager": "yarn@3.3.0",
   "composite": true,
   "dependencies": {
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
     "commander": "^9.4.1",
     "deepl-node": "^1.7.2",
+    "diff": "^5.1.0",
     "dotenv": "^16.0.3",
     "dotenv-safe": "^8.2.0",
+    "lodash": "^4.17.21",
     "marked": "^4.2.4",
     "turndown": "^7.1.1"
   },
   "devDependencies": {
+    "@types/diff": "^5",
     "@types/dotenv-safe": "^8",
+    "@types/lodash": "^4",
     "@types/marked": "^4",
     "@types/turndown": "^5.0.1"
   }

@@ -6,6 +6,6 @@ This is used primarily to teach web development to people who can't speak fluent
 
 ## How to run locally
 
-1. `yarn install`
-2. `cp .env.example .env` and fill in the values
-3. `yarn translate` and other commands should work now
+- `yarn install`
+- `cp .env.example .env` and fill in the values
+- `yarn translate` and other commands should work now
