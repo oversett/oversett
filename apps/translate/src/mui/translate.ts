@@ -83,7 +83,10 @@ function markdownToDeeplHtml(markdown: string): string {
 
 // The inverse of 'markdownToDeeplHtml'
 function deeplHtmlToMarkdown(html: string): string {
-  const turndownService = new TurndownService({ headingStyle: "atx" })
+  const turndownService = new TurndownService({
+    headingStyle: "atx",
+    codeBlockStyle: "fenced",
+  })
   turndownService.addRule("callout", {
     filter: (node) =>
       node.nodeName === "DIV" && node.classList.contains("callout"),
