@@ -14,9 +14,15 @@ program
   .description("Translate MUI docs")
   .argument("<file>", "File to translate")
   .option("--no-translate", "Parse and render, but don't translate")
+  .option("-i --inplace", "Overwrite the input file")
   .action(async (file: string, options) => {
     let content = (await fs.readFile(file)).toString()
-    console.log(await translateMui(content, options))
+    let translated = await translateMui(content, options)
+    if (options.inplace) {
+      await fs.writeFile(file, translated)
+    } else {
+      process.stdout.write(translated)
+    }
   })
 
 program.parse()
