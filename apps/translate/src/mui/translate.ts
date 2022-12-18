@@ -29,9 +29,9 @@ function markdownToDeeplHtml(markdown: string): string {
     smartypants: false,
   }
 
-  // Taken from parseMarkdown.js. This handles ::: callout blocks.
   marked.use({
     extensions: [
+      // Taken from parseMarkdown.js. This handles ::: callout blocks.
       {
         name: "callout",
         level: "block",
@@ -70,6 +70,13 @@ function markdownToDeeplHtml(markdown: string): string {
 
   // Don't translate inline code and code blocks
   $("code").attr("translate", "no")
+  // Don't translate {{"demo": ...}} etc blocks
+  $("p").each((_, el) => {
+    let text = $(el).text()
+    if (text.startsWith("{{") && text.endsWith("}}")) {
+      $(el).attr("translate", "no")
+    }
+  })
 
   return $.html()
 }
@@ -110,7 +117,6 @@ export async function translateMui(
   }
 
   const html = markdownToDeeplHtml(content)
-  console.log(html)
 
   const translatedHtml = translate
     ? await translator.translateText(html, "en", "ru", {
