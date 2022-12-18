@@ -12,9 +12,21 @@ This is used primarily to teach web development to people who can't speak fluent
 
 ## How to run locally
 
+### Setup
+
+JavaScript:
+
 - `yarn install`
 - `cp .env.example .env` and fill in the values
-- `yarn translate` and other commands should work now
+
+Python:
+
+- Install Anaconda, see https://www.anaconda.com/products/distribution
+- Install `anaconda-project`: `conda install anaconda-project`
+- Download dependencies: `cd ml/text && anaconda-project prepare`
+- Enter the correct environment: `conda activate envs/default`
+
+### Translation
 
 To translate the entire material-ui repository:
 
