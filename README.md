@@ -33,3 +33,9 @@ To translate the entire material-ui repository:
 ```
 yarn translate mui repo ~/code/material-ui
 ```
+
+To translate only a subset of the material-ui repository:
+
+```
+yarn translate mui repo ~/code/material-ui base/components/tabs   # can list multiple paths
+```
