@@ -12,6 +12,18 @@
 		"typescript.enablePromptUseWorkspaceTsdk": true,
 		"files.associations": {
 			"*.env.*": "dotenv"
+		},
+		"editor.formatOnSave": true,
+		"search.exclude": {
+			"**/.yarn": true,
+			"**/.pnp.*": true
 		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.black-formatter",
+			"arcanis.vscode-zipfs",
+			"esbenp.prettier-vscode"
+		]
 	}
 }

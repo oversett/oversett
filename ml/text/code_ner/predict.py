@@ -6,8 +6,12 @@ import spacy
 import os
 import sys
 
+import functions
+
+
 def get_script_path():
     return os.path.dirname(os.path.realpath(sys.argv[0]))
+
 
 nlp = spacy.load(get_script_path() + "/output/model-best")
 

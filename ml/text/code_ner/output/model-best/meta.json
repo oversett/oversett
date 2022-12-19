@@ -25,10 +25,12 @@
     ]
   },
   "pipeline":[
+    "retokenize_punctuation",
     "tok2vec",
     "ner"
   ],
   "components":[
+    "retokenize_punctuation",
     "tok2vec",
     "ner"
   ],
@@ -36,17 +38,17 @@
 
   ],
   "performance":{
-    "ents_f":1.0,
-    "ents_p":1.0,
-    "ents_r":1.0,
+    "ents_f":0.5873344371,
+    "ents_p":0.7045680238,
+    "ents_r":0.503548616,
     "ents_per_type":{
       "CODE":{
-        "p":1.0,
-        "r":1.0,
-        "f":1.0
+        "p":0.7045680238,
+        "r":0.503548616,
+        "f":0.5873344371
       }
     },
-    "tok2vec_loss":0.0000000041,
-    "ner_loss":0.0000000062
+    "tok2vec_loss":853.5872271886,
+    "ner_loss":243.8544215555
   }
 }

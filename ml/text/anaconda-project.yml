@@ -68,6 +68,9 @@ packages:
 - pip:
   - spacy-lookups-data
 - spacy-model-en_core_web_trf
+- docopt
+- regex
+- spacy-model-en_core_web_lg
 channels: []
 
 #

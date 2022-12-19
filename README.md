@@ -8,7 +8,7 @@ This is used primarily to teach web development to people who can't speak fluent
 
 - `apps/translate` — CLI tool for translation, written in TypeScript
 - `ml/text/` — Machine learning models for text processing, written in Python
-  - `./code_ner` — Named Entity Recognition model for detecting inline code in MUI docs
+  - `./code_ner` — Named Entity Recognition model for detecting inline code in MUI docs _(not used at the moment)_
 
 ## How to run locally
 
@@ -19,7 +19,7 @@ JavaScript:
 - `yarn install`
 - `cp .env.example .env` and fill in the values
 
-Python:
+Python **(not used at the moment)**:
 
 - Install Anaconda, see https://www.anaconda.com/products/distribution
 - Install `anaconda-project`: `conda install anaconda-project`
