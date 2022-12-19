@@ -31,5 +31,5 @@ Python **(not used at the moment)**:
 To translate the entire material-ui repository:
 
 ```
-find ../../material-ui/docs/data -name "*.md" ! -name "*-pt.md" ! -name "*-zh.md" -exec bash -c 'echo "$0"; yarn translate mui --inplace "$0"' {} \;
+yarn translate mui repo ~/code/material-ui
 ```
