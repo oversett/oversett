@@ -17,7 +17,8 @@
 		"search.exclude": {
 			"**/.yarn": true,
 			"**/.pnp.*": true
-		}
+		},
+		"search.useParentIgnoreFiles": true
 	},
 	"extensions": {
 		"recommendations": [

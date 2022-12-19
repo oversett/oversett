@@ -21,7 +21,7 @@ from functions import retokenize_punctuation
 from spacy import displacy
 
 
-THRESHOLD = 1  # Only remove backticks in 30% of cases
+THRESHOLD = 1  # Remove backticks in 100% of cases (e.g. 0.3 = 30% of cases)
 MAX_LENGTH = 30  # Ignore inline code longer than 30 characters
 
 
