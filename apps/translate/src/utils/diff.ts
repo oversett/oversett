@@ -1,7 +1,7 @@
 import { diffLines } from "diff"
 import chalk from "chalk"
 
-// Display colorful diff between two strings
+/** Display a diff between two strings. The result can be used in terminal and will have colors. */
 export function showDiff(a: string, b: string): string {
   const diffResult = diffLines(a, b)
   let result = ""
