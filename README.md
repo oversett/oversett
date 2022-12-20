@@ -6,7 +6,7 @@ This is used primarily to teach web development to people who can't speak fluent
 
 ## Discord
 
-**Do you want to request a new language, or help with the translation? Join the `#oversett` channel at https://discord.gg/6Jp9mNBNgC.**
+**Do you want to request a new language? Or help with the translation? Join the `#oversett` channel at https://discord.gg/6Jp9mNBNgC.**
 
 ---
 
@@ -34,20 +34,24 @@ Python **(not used at the moment)**:
 
 ### Translation
 
-To translate the entire material-ui repository:
+#### MUI
+
+You will need a patched version of the MUI repo. Clone it from https://github.com/oversett/mui-repo.
+
+To translate the entire repo:
 
 ```
-yarn translate mui repo ~/code/material-ui
+yarn translate mui repo ../mui-repo
 ```
 
-To translate only a subset of the material-ui repository:
+To translate only a subset of the repo:
 
 ```
-yarn translate mui repo ~/code/material-ui base/components/tabs   # can list multiple paths
+yarn translate mui repo ../mui-repo base/components/tabs   # can list multiple paths
 ```
 
-To preview the translation:
+To preview the translation (at http://localhost:3000):
 
 ```
-cd ~/code/material-ui && yarn && yarn docs:dev    # the docs will be at http://localhost:3000
+cd ../mui-repo && yarn && yarn docs:dev
 ```
