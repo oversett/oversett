@@ -50,6 +50,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@joplin/turndown-plugin-gfm", [\
+        ["npm:1.0.45", {\
+          "packageLocation": "./.yarn/cache/@joplin-turndown-plugin-gfm-npm-1.0.45-f05e029b30-33a4f9fce4.zip/node_modules/@joplin/turndown-plugin-gfm/",\
+          "packageDependencies": [\
+            ["@joplin/turndown-plugin-gfm", "npm:1.0.45"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@jridgewell/resolve-uri", [\
         ["npm:3.1.0", {\
           "packageLocation": "./.yarn/cache/@jridgewell-resolve-uri-npm-3.1.0-6ff2351e61-b5ceaaf9a1.zip/node_modules/@jridgewell/resolve-uri/",\
@@ -771,6 +780,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/translate/",\
           "packageDependencies": [\
             ["translate", "workspace:apps/translate"],\
+            ["@joplin/turndown-plugin-gfm", "npm:1.0.45"],\
             ["@types/diff", "npm:5.0.2"],\
             ["@types/dotenv-safe", "npm:8.1.2"],\
             ["@types/glob", "npm:8.0.0"],\
@@ -787,8 +797,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["glob", "npm:8.0.3"],\
             ["lodash", "npm:4.17.21"],\
             ["marked", "npm:4.2.4"],\
-            ["turndown", "npm:7.1.1"],\
-            ["turndown-plugin-gfm", "npm:1.0.2"]\
+            ["turndown", "npm:7.1.1"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -844,15 +853,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["turndown", "npm:7.1.1"],\
             ["domino", "npm:2.1.6"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["turndown-plugin-gfm", [\
-        ["npm:1.0.2", {\
-          "packageLocation": "./.yarn/cache/turndown-plugin-gfm-npm-1.0.2-73465b88af-18191dc18d.zip/node_modules/turndown-plugin-gfm/",\
-          "packageDependencies": [\
-            ["turndown-plugin-gfm", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\

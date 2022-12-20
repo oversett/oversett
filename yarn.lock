@@ -14,6 +14,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@joplin/turndown-plugin-gfm@npm:^1.0.45":
+  version: 1.0.45
+  resolution: "@joplin/turndown-plugin-gfm@npm:1.0.45"
+  checksum: 33a4f9fce43e9aba45089224fada8104c45f9763106619267bbffdd4256cb05075dead6b026ba055b6c489fde67b479db4a5cedf11cf4357a1fd141f2222d2ff
+  languageName: node
+  linkType: hard
+
 "@jridgewell/resolve-uri@npm:^3.0.3":
   version: 3.1.0
   resolution: "@jridgewell/resolve-uri@npm:3.1.0"
@@ -623,6 +630,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "translate@workspace:apps/translate"
   dependencies:
+    "@joplin/turndown-plugin-gfm": ^1.0.45
     "@types/diff": ^5
     "@types/dotenv-safe": ^8
     "@types/glob": ^8
@@ -640,7 +648,6 @@ __metadata:
     lodash: ^4.17.21
     marked: ^4.2.4
     turndown: ^7.1.1
-    turndown-plugin-gfm: ^1.0.2
   languageName: unknown
   linkType: soft
 
@@ -679,13 +686,6 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
-  languageName: node
-  linkType: hard
-
-"turndown-plugin-gfm@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "turndown-plugin-gfm@npm:1.0.2"
-  checksum: 18191dc18d731ec16bb1f1a477af6471ce2acf152b882a7eccef8e0101e09628fec0f8499f352f0a291ce798f1f30d799b5a72bd5d2cde30a2a28070de24495c
   languageName: node
   linkType: hard
 

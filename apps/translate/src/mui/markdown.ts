@@ -1,7 +1,7 @@
 import { marked } from "marked"
 import TurndownService from "turndown"
 // @ts-ignore
-import { gfm } from "turndown-plugin-gfm"
+import { gfm } from "@joplin/turndown-plugin-gfm"
 import * as cheerio from "cheerio"
 
 // Render Markdown into HTML that would work well with Deepl
@@ -99,7 +99,7 @@ export function deeplHtmlToMarkdown(html: string): string {
     },
   })
 
-  // Enable GFM. Note: the plugin uses ~ for strikethrough, but MUI uses ~~. I checked and it works the same.
+  // Enable GFM
   turndownService.use(gfm)
 
   // Handle ::: callout blocks
