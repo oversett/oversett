@@ -4,6 +4,12 @@ We are translating web development documentation (e.g. [MUI](https://mui.com)) i
 
 This is used primarily to teach web development to people who can't speak fluent English. See [webdev.artyom.me](https://webdev.artyom.me) for the details.
 
+## Discord
+
+**Do you want to request a new language, or help with the translation? Join the `#oversett` channel at https://discord.gg/6Jp9mNBNgC.**
+
+---
+
 ## File structure
 
 - `apps/translate` — CLI tool for translation, written in TypeScript
