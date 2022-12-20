@@ -113,7 +113,7 @@ function deeplHtmlToMarkdown(html: string): string {
       node.nodeName === "DIV" && node.getAttribute("data-type") === "callout",
     replacement: (content, node) => {
       const severity = (node as Element).getAttribute("data-severity")
-      return `:::${severity}\n${content.trim()}\n:::`
+      return `\n\n:::${severity}\n${content.trim()}\n:::\n\n`
     },
   })
 
