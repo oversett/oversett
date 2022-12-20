@@ -1,57 +1,18 @@
 # _Oversett_ — Translate all the docs
 
-We are translating web development documentation (e.g. [MUI](https://mui.com)) into Russian, and later maybe other languages.
+**🌈 Do you want to request a new language? Or help with the translation? Join the `#oversett` channel at https://discord.gg/6Jp9mNBNgC.**
 
-This is used primarily to teach web development to people who can't speak fluent English. See [webdev.artyom.me](https://webdev.artyom.me) for the details.
+## What is happening here?
 
-## Discord
+We are auto-translating web development docs into Russian, and later maybe other languages.
 
-**Do you want to request a new language? Or help with the translation? Join the `#oversett` channel at https://discord.gg/6Jp9mNBNgC.**
+Right now this is used to teach web development to people who aren't fluent at English. See https://webdev.artyom.me.
 
----
+## What docs are available?
 
-## File structure
+- [MUI (Material UI, a React UI library)](https://mui.com)
+  - [Russian translation](https://ru.mui.oversett.xyz)
 
-- `apps/translate` — CLI tool for translation, written in TypeScript
-- `ml/text/` — Machine learning models for text processing, written in Python
-  - `./code_ner` — Named Entity Recognition model for detecting inline code in MUI docs _(not used at the moment)_
+## How to contribute?
 
-## How to run locally
-
-### Setup
-
-JavaScript:
-
-- `yarn install`
-- `cp .env.example .env` and fill in the values
-
-Python **(not used at the moment)**:
-
-- Install Anaconda, see https://www.anaconda.com/products/distribution
-- Install `anaconda-project`: `conda install anaconda-project`
-- Download dependencies: `cd ml/text && anaconda-project prepare`
-- Enter the correct environment: `conda activate envs/default`
-
-### Translation
-
-#### MUI
-
-You will need a patched version of the MUI repo. Clone it from https://github.com/oversett/mui-repo.
-
-To translate the entire repo:
-
-```
-yarn translate mui repo ../mui-repo
-```
-
-To translate only a subset of the repo:
-
-```
-yarn translate mui repo ../mui-repo base/components/tabs   # can list multiple paths
-```
-
-To preview the translation (at http://localhost:3000):
-
-```
-cd ../mui-repo && yarn && yarn docs:dev
-```
+See [docs/](docs/).
