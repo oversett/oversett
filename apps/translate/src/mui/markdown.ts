@@ -69,13 +69,23 @@ export function markdownToDeeplHtml(markdown: string): string {
     }
   })
 
+  // For all headings, keep the original text as an attribute of an empty bogus element — we'll need it later so that MUI can use the original text when generating heading IDs
+  $("h1, h2, h3, h4, h5, h6").each((_, el) => {
+    const text = $(el).text()
+    const meta = $("<meta data-oversett>")
+    meta.attr("data-original-text", text)
+    $(el).append(" ", meta)
+  })
+
   return $.html()
 }
+
 // The inverse of 'markdownToDeeplHtml'
 export function deeplHtmlToMarkdown(html: string): string {
-  // First, remove the translate="no" attributes
+  // Remove the translate="no" attributes
   const $ = cheerio.load(html)
   $("[translate=no]").removeAttr("translate")
+
   html = $.html()
 
   const turndownService = new TurndownService({

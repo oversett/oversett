@@ -1,14 +1,16 @@
 import _ from "lodash"
 
+//
 // Taken from https://github.com/mui/material-ui/blob/master/packages/markdown/parseMarkdown.js
+//
 
 const headerRegExp = /---[\r\n]([\s\S]*)[\r\n]---/
 const headerKeyValueRegExp = /(.*?):[\r\n]?\s+(\[[^\]]+\]|.*)/g
 
-// Extract headers (the block with "---" at the beginning) from Markdown.
-//
-// Note: we can't use the function from parseMarkdown.js verbatim because it
-// sorts the 'components' array and parses JSON strings. We just want something dumb.
+/** Extract headers (the block with `---` at the beginning) from Markdown.
+ *
+ * Note: we can't use the function from parseMarkdown.js verbatim because it sorts the `components` array and parses JSON strings. We just want something dumb.
+ */
 export function getHeaders(markdown: string): { [key: string]: string } {
   let headerMatch = markdown.match(headerRegExp)
   if (!headerMatch) return {}
@@ -32,9 +34,11 @@ export function getHeaders(markdown: string): { [key: string]: string } {
   }
 }
 
+//
 // The following functions are not taken from MUI anymore
+//
 
-// Render headers back into Markdown. Should be the inverse of 'getHeaders'.
+/** Render headers back into Markdown. Should be the inverse of `getHeaders`. */
 export function renderHeaders(headers: { [key: string]: string }): string {
   if (_.isEmpty(headers)) return ""
   return [
@@ -44,12 +48,12 @@ export function renderHeaders(headers: { [key: string]: string }): string {
   ].join("\n")
 }
 
-// Remove headers from Markdown content.
+/** Remove headers from Markdown content. */
 export function removeHeaders(markdown: string): string {
   return markdown.replace(headerRegExp, "")
 }
 
-// Get the headers block from Markdown content verbatim.
+/** Get the headers block from Markdown content verbatim. */
 export function extractHeaders(markdown: string): string {
   const match = markdown.match(headerRegExp)
   return match ? match[0] : ""
