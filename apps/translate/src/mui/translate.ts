@@ -5,6 +5,8 @@
 import * as deepl from "deepl-node"
 import { marked } from "marked"
 import TurndownService from "turndown"
+// @ts-ignore
+import { gfm } from "turndown-plugin-gfm"
 import { showDiff } from "../utils/diff"
 import {
   getHeaders,
@@ -58,7 +60,7 @@ function markdownToDeeplHtml(markdown: string): string {
         },
         // Using <div> and data-severity instead of <aside> and specific classes
         renderer(token) {
-          return `<div class="____callout" data-severity="${
+          return `<div data-type="callout" data-severity="${
             token.severity
           }">${this.parser.parse(token.tokens!)}\n</div>`
         },
@@ -70,6 +72,10 @@ function markdownToDeeplHtml(markdown: string): string {
 
   // Don't translate inline code and code blocks
   $("code").attr("translate", "no")
+
+  // Don't translate <kbd>
+  $("kbd").attr("translate", "no")
+
   // Don't translate {{"demo": ...}} etc blocks
   $("p").each((_, el) => {
     let text = $(el).text()
@@ -83,19 +89,42 @@ function markdownToDeeplHtml(markdown: string): string {
 
 // The inverse of 'markdownToDeeplHtml'
 function deeplHtmlToMarkdown(html: string): string {
+  // First, remove the translate="no" attributes
+  const $ = cheerio.load(html)
+  $("[translate=no]").removeAttr("translate")
+  html = $.html()
+
   const turndownService = new TurndownService({
     headingStyle: "atx",
     codeBlockStyle: "fenced",
     bulletListMarker: "-",
+    // All unknown tags should be output as-is
+    defaultReplacement: (content, node) => {
+      return (node as Element).outerHTML
+    },
   })
+
+  // Enable GFM. Note: the plugin uses ~ for strikethrough, but MUI uses ~~. I checked and it works the same.
+  turndownService.use(gfm)
+
+  // Handle ::: callout blocks
   turndownService.addRule("callout", {
     filter: (node) =>
-      node.nodeName === "DIV" && node.classList.contains("____callout"),
+      node.nodeName === "DIV" && node.getAttribute("data-type") === "callout",
     replacement: (content, node) => {
       const severity = (node as Element).getAttribute("data-severity")
       return `:::${severity}\n${content.trim()}\n:::`
     },
   })
+
+  // Elements with classes (e.g. <p class="description">) should be output as-is
+  turndownService.addRule("keep-classes", {
+    filter: (node) => node.classList.length > 0,
+    replacement: (content, node) => {
+      return (node as Element).outerHTML
+    },
+  })
+
   return turndownService.turndown(html)
 }
 

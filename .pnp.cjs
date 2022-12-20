@@ -787,7 +787,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["glob", "npm:8.0.3"],\
             ["lodash", "npm:4.17.21"],\
             ["marked", "npm:4.2.4"],\
-            ["turndown", "npm:7.1.1"]\
+            ["turndown", "npm:7.1.1"],\
+            ["turndown-plugin-gfm", "npm:1.0.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -843,6 +844,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["turndown", "npm:7.1.1"],\
             ["domino", "npm:2.1.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["turndown-plugin-gfm", [\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/turndown-plugin-gfm-npm-1.0.2-73465b88af-18191dc18d.zip/node_modules/turndown-plugin-gfm/",\
+          "packageDependencies": [\
+            ["turndown-plugin-gfm", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
