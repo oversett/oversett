@@ -15,4 +15,4 @@ Right now this is used to teach web development to people who aren't fluent at E
 
 ## How to contribute?
 
-See [docs/](docs/).
+See [docs/](docs/) and [oversett/oversett](https://github.com/oversett/oversett) on GitHub.
