@@ -124,8 +124,21 @@ export function deeplHtmlToMarkdown(html: string): string {
   turndownService.addRule("keep-attributes", {
     filter: (node) =>
       node.nodeName === "A" &&
-      Array.from(node.attributes).filter((attr) => attr.name !== "href")
-        .length > 0,
+      Array.from(node.attributes).some((attr) => attr.name !== "href"),
+    replacement: (content, node) => {
+      return (node as Element).outerHTML
+    },
+  })
+
+  // For images, we can only output src and alt. If <img> has anything else, we output it as-is.
+  turndownService.addRule("img", {
+    filter: (node) => {
+      const supportedAttr = (name: string) => name === "src" || name === "alt"
+      return (
+        node.nodeName === "IMG" &&
+        !Array.from(node.attributes).every((attr) => supportedAttr(attr.name))
+      )
+    },
     replacement: (content, node) => {
       return (node as Element).outerHTML
     },
