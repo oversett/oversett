@@ -98,6 +98,7 @@ function deeplHtmlToMarkdown(html: string): string {
     headingStyle: "atx",
     codeBlockStyle: "fenced",
     bulletListMarker: "-",
+    br: "\\",
     // All unknown tags should be output as-is
     defaultReplacement: (content, node) => {
       return (node as Element).outerHTML
