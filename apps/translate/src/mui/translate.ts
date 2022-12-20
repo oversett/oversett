@@ -2,7 +2,7 @@
 //
 // Deepl supports translating HTML but not Markdown, so we need to do a round-trip.
 
-import * as deepl from "deepl-node"
+import { deeplTranslateHtml, deeplTranslateRaw } from "../translators/deepl"
 import { showDiff } from "../utils/diff"
 import {
   getHeaders,
@@ -12,9 +12,6 @@ import {
 } from "./headers"
 import { markdownToDeeplHtml, deeplHtmlToMarkdown } from "./markdown"
 import { processMuiStrings } from "./strings"
-
-const deeplApiKey = process.env.DEEPL_API_KEY!
-const translator = new deepl.Translator(deeplApiKey)
 
 /** Translate a single .md doc */
 export async function translateMuiPage(
@@ -40,20 +37,18 @@ export async function translateMuiPage(
 
   const html = markdownToDeeplHtml(content)
 
-  const translatedHtml = translate
-    ? await translator.translateText(html, "en", "ru", {
-        tagHandling: "html",
-      })
-    : { text: html }
-  const translatedMarkdown = deeplHtmlToMarkdown(translatedHtml.text)
+  const translatedHtml = translate ? await deeplTranslateHtml(html) : html
+  const translatedMarkdown = deeplHtmlToMarkdown(translatedHtml)
 
   return `${renderHeaders(headers)}\n\n${translatedMarkdown}\n`
 }
 
 /** Translate the translations.json file */
 export function translateMuiStrings(json: any): Promise<any> {
-  return processMuiStrings(json, async (value) => {
-    const translated = await translator.translateText(value, "en", "ru")
-    return translated.text
+  return processMuiStrings(json, async (titles) => {
+    // This relies on the fact that Deepl translates line by line.
+    // At least when I tested it, it did.
+    let translatedTitles = await deeplTranslateRaw(titles.join("\n"))
+    return translatedTitles.split("\n")
   })
 }

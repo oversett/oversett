@@ -15,15 +15,13 @@
  */
 export async function processMuiStrings(
   json: any,
-  f: (text: string) => Promise<string>
+  go: (titles: string[]) => Promise<string[]>
 ): Promise<any> {
   const pages = json.pages
-  const promises = Object.keys(pages).map(async (page) => {
-    const title = pages[page]
-    if (title) {
-      pages[page] = await f(title)
-    }
-  })
-  await Promise.all(promises)
+  const titles = Object.keys(pages).map((key) => pages[key])
+  const translated = await go(titles)
+  for (let i = 0; i < translated.length; i++) {
+    pages[Object.keys(pages)[i]] = translated[i]
+  }
   return json
 }

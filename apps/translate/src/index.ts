@@ -6,6 +6,8 @@ import { promises as fs } from "fs"
 import { translateMuiPage, translateMuiStrings } from "./mui/translate"
 import { findMuiFiles } from "./mui/files"
 import { join } from "path"
+import { deeplTranslateHtml, deeplTranslateRaw } from "./translators/deepl"
+import { readStdin } from "./utils/stdin"
 
 const program = new Command()
 
@@ -74,5 +76,21 @@ mui
       process.stdout.write(JSON.stringify(translated, null, 2))
     }
   })
+
+// Deepl commands (for testing)
+
+program
+  .command("deepl")
+  .description("Try DeepL on standard input")
+  .option("--html", "Preserve HTML tags")
+  .action(async (options) => {
+    let input = await readStdin()
+    let result = options.html
+      ? await deeplTranslateHtml(input)
+      : await deeplTranslateRaw(input)
+    process.stdout.write(result)
+  })
+
+// End
 
 program.parse()
