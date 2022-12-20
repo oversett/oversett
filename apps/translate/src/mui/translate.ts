@@ -126,6 +126,17 @@ function deeplHtmlToMarkdown(html: string): string {
     },
   })
 
+  // Links with extra attributes (e.g. <a href="..." target="_blank">) should be output as-is
+  turndownService.addRule("keep-attributes", {
+    filter: (node) =>
+      node.nodeName === "A" &&
+      Array.from(node.attributes).filter((attr) => attr.name !== "href")
+        .length > 0,
+    replacement: (content, node) => {
+      return (node as Element).outerHTML
+    },
+  })
+
   return turndownService.turndown(html)
 }
 
