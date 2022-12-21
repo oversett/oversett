@@ -17,7 +17,7 @@ JavaScript:
 
 Python **(not used at the moment)**:
 
-- Install Anaconda, see https://www.anaconda.com/products/distribution
+- Install Anaconda, see <https://www.anaconda.com/products/distribution>
 - Install `anaconda-project`: `conda install anaconda-project`
 - Download dependencies: `cd ml/text && anaconda-project prepare`
 - Enter the correct environment: `conda activate envs/default`
@@ -26,7 +26,7 @@ Python **(not used at the moment)**:
 
 #### MUI
 
-You will need a patched version of the MUI repo. Clone it from https://github.com/oversett/mui-repo.
+You will need a patched version of the MUI repo. Clone it from <https://github.com/oversett/mui-repo>.
 
 To translate the entire repo:
 
@@ -40,8 +40,21 @@ To translate only a subset of the repo:
 yarn translate mui repo ../mui-repo base/components/tabs   # can list multiple paths
 ```
 
-To preview the translation (at http://localhost:3000):
+To preview the translation (at <http://localhost:3000>):
 
 ```
 cd ../mui-repo && yarn && yarn docs:dev
+```
+
+To deploy the translation, you also need to clone <https://github.com/oversett/mui-translated>. Here is an example for the `ru` translation:
+
+```
+cd ..
+rm -rf mui-translated/ru
+cp -R mui-repo mui-translated/ru  # Assuming mui-repo is already translated locally
+rm -rf mui-translated/ru/.git
+
+cd mui-translated
+git add -A && git commit -m "Update ru translation"
+git push
 ```
