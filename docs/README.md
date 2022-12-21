@@ -57,4 +57,11 @@ rm -rf mui-translated/ru/.git
 cd mui-translated
 git add -A && git commit -m "Update ru translation"
 git push
+
+# Netlify should deploy automatically but the build fails for some reason.
+# You need 'netlify-cli' to do a manual deploy.
+cd ru
+yarn
+netlify build
+netlify deploy --prod
 ```
